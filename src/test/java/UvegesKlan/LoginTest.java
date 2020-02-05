@@ -1,32 +1,37 @@
 package UvegesKlan;
 
-import POM.DashboardPage;
-import POM.LoginPage;
+import com.thoughtworks.gauge.BeforeStep;
 import com.thoughtworks.gauge.Step;
-import driver.Driver;
 import org.junit.jupiter.api.Assertions;
 
 public class LoginTest extends BaseTest {
+
+    @BeforeStep
+    public void beforeStep() {
+        setDriver();
+    }
+
     @Step("Go to main page")
-    public void goToMainPage() {
-        this.driver = Driver.webDriver;
+    public void testGoToMainPage() {
         driver.get(mainPage);
-        this.loginPage = new LoginPage(driver);
     }
 
     @Step("Fill credentials with valid user data")
-    public void fillCredentials() {
+    public void testFillCredentials() {
+        setLoginPage();
         loginPage.fillCredentials(username, password);
    }
 
     @Step("Click on login button")
-    public void clickOnLoginButton() {
+    public void testClickOnLoginButton() {
+        setLoginPage();
         loginPage.clickOnLoginButton();
-        this.dashboardPage = new DashboardPage(driver);
     }
 
     @Step("Logout button is present")
-    public void logoutButtonIsPresent() {
+    public void testLogoutButtonIsPresent() {
+        setDashboardPage();
         Assertions.assertTrue(dashboardPage.isLogoutButtonPresent());
     }
+
 }
