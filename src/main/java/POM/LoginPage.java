@@ -1,6 +1,5 @@
 package POM;
 
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +21,10 @@ public class LoginPage extends Page {
     public LoginPage(WebDriver driver) {
         super(driver);
         url = "secure/Dashboard.jspa";
+    }
+
+    public String getTitle() {
+        return driver.getTitle();
     }
 
     public void clickOnLoginButton() {

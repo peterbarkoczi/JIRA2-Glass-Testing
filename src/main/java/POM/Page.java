@@ -47,29 +47,8 @@ public abstract class Page {
     }
 
     void clickOn(WebElement webElement) {
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
-    }
-
-    /**
-     * <p>Creates a new issue with the given parameters.</p>
-     * <p>Apply empty string ("") if the input field is supposed
-     * to be skipped or default value should be used.</p>
-     *
-     * @param project Name of the Project as displayed in the dropdown.
-     * @param issueType Name of the Issue Type as displayed in the dropdown.
-     * @param summary Text to be typed into Summary input field.
-     */
-    public IssuePage createIssue(String project, String issueType, String summary) {
-        clickOn(createButton);
-        CreateIssueModal modal = new CreateIssueModal(driver);
-        modal.fillAndSaveIssue(project, issueType, summary);
-        modal.catchPopup();
-        return new IssuePage(driver);
-    }
-
-    public CreateIssueModal initiateCreateIssue() {
-        clickOn(createButton);
-        return new CreateIssueModal(driver);
     }
 
     public String catchPopup() {
