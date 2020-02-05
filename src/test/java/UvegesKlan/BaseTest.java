@@ -1,5 +1,7 @@
 package UvegesKlan;
 
+import POM.DashboardPage;
+import POM.LoginPage;
 import org.openqa.selenium.WebDriver;
 
 public class BaseTest {
@@ -8,4 +10,8 @@ public class BaseTest {
     protected String username = System.getenv("JIRA2_USERNAME");
     protected String password = System.getenv("JIRA2_PASSWORD");
     protected String mainPage = baseUrl + "";
+
+    // PAGES
+    LoginPage loginPage;
+    DashboardPage dashboardPage;
 }
