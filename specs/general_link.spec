@@ -1,6 +1,10 @@
 # Links tests
 
-* Go to glass documentation page as administrator
+* Go to main page
+* Fill credentials with valid user data
+* Click on login button
+* Go to glass documentation page
+//* Go to glass documentation page as administrator
 
 ## Details link
 

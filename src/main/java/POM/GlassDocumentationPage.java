@@ -16,6 +16,12 @@ public class GlassDocumentationPage extends Page {
     @FindBy(css = "#aui-uid-2")
     private WebElement versionsTab;
 
+    @FindBy(id = "glass-general-nav")
+    private WebElement generalTab;
+
+    @FindBy(xpath = "//*[@id='glass-general-panel']/div[1]/div[1]/div/h2/a/span")
+    private WebElement generalSettingsLink;
+
     public GlassDocumentationPage(WebDriver driver) {
         super(driver);
     }
@@ -31,5 +37,14 @@ public class GlassDocumentationPage extends Page {
             if (version.getText().equals(versionName))
                 return true;
         } return false;
+    }
+
+    public void clickOnGeneralTab() {
+        wait.until(ExpectedConditions.elementToBeClickable(generalTab));
+        clickOn(generalTab);
+    }
+
+    public void clickOnGeneralSettingsLink() {
+        clickOn(generalSettingsLink);
     }
 }

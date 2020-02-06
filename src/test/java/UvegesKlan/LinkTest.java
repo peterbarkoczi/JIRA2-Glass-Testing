@@ -1,13 +1,31 @@
 package UvegesKlan;
 
+import POM.GlassDocumentationPage;
+import POM.ProjectSettingsPage;
 import com.thoughtworks.gauge.BeforeStep;
 import com.thoughtworks.gauge.Step;
+import org.junit.jupiter.api.Assertions;
 
 public class LinkTest extends BaseTest {
+
+    private GlassDocumentationPage glassPage;
+    private ProjectSettingsPage projectSettingsPage;
+
+    private void setGlassPage() {
+        if (this.glassPage == null)
+            this.glassPage = new GlassDocumentationPage(driver);
+    }
+
+    private void setProjectSettingsPage() {
+        if (this.projectSettingsPage == null)
+            this.projectSettingsPage = new ProjectSettingsPage(driver);
+    }
 
     @BeforeStep
     public void beforeStep() {
         setDriver();
+        setGlassPage();
+        setProjectSettingsPage();
     }
 
     @Step("Go to glass documentation page")
@@ -17,15 +35,17 @@ public class LinkTest extends BaseTest {
 
     @Step("Click on General above the project details")
     public void goToGeneralTab() {
-
+        glassPage.clickOnGeneralTab();
     }
 
     @Step("Click on link icon belongs to Basic Summary")
-    public void testClickOnGeneralLink() {}
+    public void testClickOnGeneralLink() {
+        glassPage.clickOnGeneralSettingsLink();
+    }
 
     @Step("Details settings page open in new window")
     public void testVerifySettingsPage() {
-
+        Assertions.assertTrue(projectSettingsPage.isGeneralDetailsFormAppear());
     }
 
     @Step("Click on <innerTab> below project details")
@@ -38,6 +58,9 @@ public class LinkTest extends BaseTest {
 
     }
 
+    @Step("<innerTab> settings page open in new window")
+    public void testVerifyInnerTabSettingsPage(String innerTab) {
 
+    }
 
 }

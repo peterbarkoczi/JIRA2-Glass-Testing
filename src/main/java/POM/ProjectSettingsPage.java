@@ -3,6 +3,7 @@ package POM;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProjectSettingsPage extends Page {
 
@@ -15,11 +16,19 @@ public class ProjectSettingsPage extends Page {
     @FindBy(id = "view_project_issuetypes")
     private WebElement issueTypesSubmenu;
 
+    @FindBy(id = "project-edit")
+    private WebElement generalDetailsForm;
+
     public ProjectSettingsPage(WebDriver driver) {
         super(driver);
     }
 
     public void clickOnVersions() {
         clickOn(versionsSubmenu);
+    }
+
+    public boolean isGeneralDetailsFormAppear() {
+        wait.until(ExpectedConditions.visibilityOf(generalDetailsForm));
+        return generalDetailsForm.isDisplayed();
     }
 }

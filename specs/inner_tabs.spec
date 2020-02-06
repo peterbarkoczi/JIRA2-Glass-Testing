@@ -1,4 +1,9 @@
 # Links tests
+        | innerTab |
+        |-----------|
+        | Components|
+        | Versions  |
+        | Scemes    |
 
 * Go to glass documentation page as administrator
 
@@ -7,11 +12,5 @@
 * Click on <innerTab> below project details
 * Click on link icon belongs to <innerTab>
 * <innerTab> settings page open in new window
-
-        | innerTab |
-        |-----------|
-        | Components|
-        | Versions  |
-        | Scemes    |
 ______________
 * Log out
