@@ -17,8 +17,9 @@ public class BaseTest {
     LogoutPage logoutPage;
     DashboardPage dashboardPage;
 
+    // CI build trigger test 01
+
     public void setDriver() {
-        System.out.println("BEFORE STEP!");
         if (this.driver == null)
             this.driver = Driver.webDriver;
     }
