@@ -59,6 +59,13 @@ public class BaseTest {
 
     @Step("Go to Project Settings page")
     public void goToProjectSettingsPage() {
+        System.out.println("---- BEFORE -- Go to Project Settings page ----");
         driver.get(baseUrl + Page.getProjectSettingsURL());
+        System.out.println("---- AFTER  -- Go to Project Settings page ----");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -3,6 +3,7 @@ package POM;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends Page {
 
@@ -28,6 +29,8 @@ public class LoginPage extends Page {
 
     public void clickOnLoginButton() {
         clickOn(loginButton);
+        DashboardPage page = new DashboardPage(driver);
+        wait.until(ExpectedConditions.visibilityOf(page.getAvatar()));
     }
 
     public void fillCredentials(String username, String password) {

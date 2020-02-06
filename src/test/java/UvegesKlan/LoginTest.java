@@ -1,5 +1,6 @@
 package UvegesKlan;
 
+import POM.DashboardPage;
 import com.thoughtworks.gauge.BeforeStep;
 import com.thoughtworks.gauge.Step;
 import org.junit.jupiter.api.Assertions;
