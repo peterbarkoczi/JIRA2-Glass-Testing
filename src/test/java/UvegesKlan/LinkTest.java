@@ -61,12 +61,11 @@ public class LinkTest extends BaseTest {
         glassPage.clickOnInnerTabSettingsLink(innerTab);
     }
 
-    @Step("<innerTab> settings page open in new window")
+    @Step("General <innerTab> settings page open in new window")
     public void testVerifyInnerTabSettingsPage(String innerTab) {
         projectSettingsPage.changeTab(2);
         Assertions.assertTrue(projectSettingsPage.isInnerTabDetailsFormAppear(innerTab));
-        projectSettingsPage.closeTab();
+        driver.close();
         projectSettingsPage.changeTab(1);
     }
-
 }
