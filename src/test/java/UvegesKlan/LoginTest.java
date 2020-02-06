@@ -11,11 +11,6 @@ public class LoginTest extends BaseTest {
         setDriver();
     }
 
-    @Step("Go to main page")
-    public void testGoToMainPage() {
-        driver.get(mainPage);
-    }
-
     @Step("Fill credentials with valid user data")
     public void testFillCredentials() {
         setLoginPage();
