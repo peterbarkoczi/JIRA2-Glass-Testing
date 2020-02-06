@@ -25,6 +25,15 @@ public class ProjectSettingsPage extends Page {
     @FindBy(id = "release-page")
     private WebElement versionsList;
 
+    @FindBy(id = "project-config-panel-role-results")
+    private WebElement userList;
+
+    @FindBy(id = "project-config-panel-permissions")
+    private WebElement permissionList;
+
+    @FindBy(id = "project-config-panel-notifications")
+    private WebElement notificationList;
+
     public ProjectSettingsPage(WebDriver driver) {
         super(driver);
     }
@@ -33,9 +42,22 @@ public class ProjectSettingsPage extends Page {
         clickOn(versionsSubmenu);
     }
 
-    public boolean isGeneralDetailsFormAppear() {
-        wait.until(ExpectedConditions.visibilityOf(generalDetailsForm));
-        return generalDetailsForm.isDisplayed();
+    public boolean isTabDetailsFormAppear(String tab) {
+        switch (tab) {
+            case "General":
+                wait.until(ExpectedConditions.visibilityOf(generalDetailsForm));
+                return generalDetailsForm.isDisplayed();
+            case "People":
+                wait.until(ExpectedConditions.visibilityOf(userList));
+                return userList.isDisplayed();
+            case "Permissions":
+                wait.until(ExpectedConditions.visibilityOf(permissionList));
+                return permissionList.isDisplayed();
+            case "Notifications":
+                wait.until(ExpectedConditions.visibilityOf(notificationList));
+                return notificationList.isDisplayed();
+        }
+        return false;
     }
 
     public boolean isInnerTabDetailsFormAppear(String innerTab) {
@@ -47,8 +69,7 @@ public class ProjectSettingsPage extends Page {
                 wait.until(ExpectedConditions.visibilityOf(versionsList));
                 return versionsList.isDisplayed();
         }
-        wait.until(ExpectedConditions.visibilityOf(generalDetailsForm));
-        return generalDetailsForm.isDisplayed();
+        return false;
     }
 
 }
