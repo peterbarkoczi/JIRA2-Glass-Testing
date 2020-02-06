@@ -2,10 +2,8 @@ package UvegesKlan;
 
 import POM.GlassDocumentationPage;
 import POM.ProjectSettingsPage;
-import com.thoughtworks.gauge.AfterScenario;
 import com.thoughtworks.gauge.BeforeStep;
 import com.thoughtworks.gauge.Step;
-import driver.Driver;
 import org.junit.jupiter.api.Assertions;
 
 public class LinkTest extends BaseTest {
@@ -35,20 +33,22 @@ public class LinkTest extends BaseTest {
         driver.get("https://jira2.codecool.codecanvas.hu/projects/UVG?selectedItem=com.codecanvas.glass:glass");
     }
 
-    @Step("Click on General above the project details")
-    public void goToGeneralTab() {
-        glassPage.clickOnGeneralTab();
+    @Step("Click on <tab> above the project details")
+    public void goToGeneralTab(String tab) {
+        glassPage.clickOnTab(tab);
     }
 
-    @Step("Click on link icon belongs to Basic Summary")
-    public void testClickOnGeneralLink() {
-        glassPage.clickOnGeneralSettingsLink();
+    @Step("Click on quick link icon belongs to <title>")
+    public void testClickOnGeneralLink(String title) {
+        glassPage.clickOnTabSettingsLink(title);
     }
 
-    @Step("Details settings page open in new window")
-    public void testVerifySettingsPage() {
+    @Step("<tab> settings page open in new window")
+    public void testVerifySettingsPage(String tab) {
         projectSettingsPage.changeTab(2);
-        Assertions.assertTrue(projectSettingsPage.isGeneralDetailsFormAppear());
+        Assertions.assertTrue(projectSettingsPage.isTabDetailsFormAppear(tab));
+        driver.close();
+        projectSettingsPage.changeTab(1);
     }
 
     @Step("Click on <innerTab> below project details")

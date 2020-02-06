@@ -25,8 +25,26 @@ public class GlassDocumentationPage extends Page {
     @FindBy(id = "glass-general-nav")
     private WebElement generalTab;
 
+    @FindBy(id = "glass-people-nav")
+    private WebElement peopleTab;
+
+    @FindBy(id = "glass-permissions-nav")
+    private WebElement permissionsTab;
+
+    @FindBy(id = "glass-notifications-nav")
+    private WebElement notificationsTab;
+
     @FindBy(xpath = "//*[@id='glass-general-panel']/div[1]/div[1]/div/h2/a/span")
     private WebElement generalSettingsLink;
+
+    @FindBy(xpath = "//*[@id=\"glass-people-panel\"]/div/h2/a/span")
+    private WebElement peopleSettingsLink;
+
+    @FindBy(xpath = "//*[@id=\"glass-permissions-panel\"]/div/h2/a/span")
+    private WebElement permissionsSettingsLink;
+
+    @FindBy(xpath = "//*[@id=\"glass-notifications-panel\"]/div/h2/a/span")
+    private WebElement notificationsSettingsLink;
 
     @FindBy(xpath = "//*[@id=\"glass-general-components-panel\"]/div/h2/a/span")
     private WebElement componentsSettingLink;
@@ -46,9 +64,42 @@ public class GlassDocumentationPage extends Page {
         clickOn(versionsTab);
     }
 
-    public void clickOnGeneralTab() {
-        wait.until(ExpectedConditions.elementToBeClickable(generalTab));
-        clickOn(generalTab);
+    public void clickOnTab(String tab) {
+        switch (tab) {
+            case "General":
+                wait.until(ExpectedConditions.elementToBeClickable(generalTab)).click();
+//                clickOn(generalTab);
+                break;
+            case "People":
+                wait.until(ExpectedConditions.elementToBeClickable(peopleTab)).click();
+//                clickOn(peopleTab);
+                break;
+            case "Permissions":
+                wait.until(ExpectedConditions.elementToBeClickable(permissionsTab)).click();
+//                clickOn(permissionsTab);
+                break;
+            case "Notifications":
+                wait.until(ExpectedConditions.elementToBeClickable(notificationsTab)).click();
+//                clickOn(notificationsTab);
+                break;
+        }
+    }
+
+    public void clickOnTabSettingsLink(String title) {
+        switch (title) {
+            case "Basic Summary":
+                clickOn(generalSettingsLink);
+                break;
+            case "People":
+                clickOn(peopleSettingsLink);
+                break;
+            case "Permission Matrix":
+                clickOn(permissionsSettingsLink);
+                break;
+            case "Notification Matrix":
+                clickOn(notificationsSettingsLink);
+                break;
+        }
     }
 
     public void clickOnInnerTab(String innerTab) {
@@ -89,9 +140,5 @@ public class GlassDocumentationPage extends Page {
             if (version.getText().equals(versionName))
                 return true;
         } return false;
-    }
-
-    public void clickOnGeneralSettingsLink() {
-        clickOn(generalSettingsLink);
     }
 }
