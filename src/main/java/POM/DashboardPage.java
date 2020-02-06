@@ -18,7 +18,6 @@ public class DashboardPage extends Page {
 
     public DashboardPage(WebDriver driver) {
         super(driver);
-        this.url = "secure/Dashboard.jspa";
     }
 
     public String getUsernameFromAvatar() {

@@ -1,5 +1,6 @@
 package UvegesKlan;
 
+import POM.DashboardPage;
 import com.thoughtworks.gauge.BeforeStep;
 import com.thoughtworks.gauge.Step;
 import org.junit.jupiter.api.Assertions;
@@ -9,11 +10,6 @@ public class LoginTest extends BaseTest {
     @BeforeStep
     public void beforeStep() {
         setDriver();
-    }
-
-    @Step("Go to main page")
-    public void testGoToMainPage() {
-        driver.get(mainPage);
     }
 
     @Step("Fill credentials with valid user data")
