@@ -70,6 +70,11 @@ public abstract class Page {
         js.executeScript("window.open('" + url + "')");
     }
 
+    public void closeTab() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.close()");
+    }
+
     public void changeTab(int numberOfTab) {
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(numberOfTab - 1));
