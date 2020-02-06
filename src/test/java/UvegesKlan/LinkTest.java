@@ -2,8 +2,10 @@ package UvegesKlan;
 
 import POM.GlassDocumentationPage;
 import POM.ProjectSettingsPage;
+import com.thoughtworks.gauge.AfterScenario;
 import com.thoughtworks.gauge.BeforeStep;
 import com.thoughtworks.gauge.Step;
+import driver.Driver;
 import org.junit.jupiter.api.Assertions;
 
 public class LinkTest extends BaseTest {
@@ -45,22 +47,26 @@ public class LinkTest extends BaseTest {
 
     @Step("Details settings page open in new window")
     public void testVerifySettingsPage() {
+        projectSettingsPage.changeTab(2);
         Assertions.assertTrue(projectSettingsPage.isGeneralDetailsFormAppear());
     }
 
     @Step("Click on <innerTab> below project details")
     public void testGoToTab(String innerTab) {
-
+        glassPage.clickOnInnerTab(innerTab);
     }
 
     @Step("Click on link icon belongs to <innerTab>")
     public void testClickOnTabLink(String innerTab) {
-
+        glassPage.clickOnInnerTabSettingsLink(innerTab);
     }
 
     @Step("<innerTab> settings page open in new window")
     public void testVerifyInnerTabSettingsPage(String innerTab) {
-
+        projectSettingsPage.changeTab(2);
+        Assertions.assertTrue(projectSettingsPage.isInnerTabDetailsFormAppear(innerTab));
+        projectSettingsPage.closeTab();
+        projectSettingsPage.changeTab(1);
     }
 
 }

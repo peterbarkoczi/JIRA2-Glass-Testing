@@ -19,6 +19,12 @@ public class ProjectSettingsPage extends Page {
     @FindBy(id = "project-edit")
     private WebElement generalDetailsForm;
 
+    @FindBy(id = "components-table")
+    private WebElement componentsList;
+
+    @FindBy(id = "release-page")
+    private WebElement versionsList;
+
     public ProjectSettingsPage(WebDriver driver) {
         super(driver);
     }
@@ -31,4 +37,18 @@ public class ProjectSettingsPage extends Page {
         wait.until(ExpectedConditions.visibilityOf(generalDetailsForm));
         return generalDetailsForm.isDisplayed();
     }
+
+    public boolean isInnerTabDetailsFormAppear(String innerTab) {
+        switch (innerTab) {
+            case "Components":
+                wait.until(ExpectedConditions.visibilityOf(componentsList));
+                return componentsList.isDisplayed();
+            case "Versions":
+                wait.until(ExpectedConditions.visibilityOf(versionsList));
+                return versionsList.isDisplayed();
+        }
+        wait.until(ExpectedConditions.visibilityOf(generalDetailsForm));
+        return generalDetailsForm.isDisplayed();
+    }
+
 }
