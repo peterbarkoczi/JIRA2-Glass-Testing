@@ -37,11 +37,9 @@ public class GlassVersionsTest extends BaseTest {
 
     @Step("Select Versions submenu")
     public void selectVersionsSubmenuInProjectSettings() {
-        System.out.println("---- BEFORE -- Select Versions submenu ----");
         setProjectSettingsPage();
         System.out.println("setProjectSettingsPage() ran");
         projectSettingsPage.clickOnVersions();
-        System.out.println("---- AFTER  -- Select Versions submenu ----");
     }
 
     @Step("Fill Version name input field with <name>")
@@ -68,4 +66,9 @@ public class GlassVersionsTest extends BaseTest {
         Assertions.assertTrue(glassPage.isVersionAvailable(version));
     }
 
+    @Step("Delete version named <new version>")
+    public void deleteVersion(String versionName) {
+        setVersionsPage();
+        versionsPage.deleteVersion(versionName);
+    }
 }
