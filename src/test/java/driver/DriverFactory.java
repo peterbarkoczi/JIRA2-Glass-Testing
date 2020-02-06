@@ -28,6 +28,13 @@ public class DriverFactory {
             default:
                 ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
                 ChromeOptions options = new ChromeOptions();
+
+                options.addArguments("start-maximized"); // open Browser in maximized mode
+                options.addArguments("disable-infobars"); // disabling infobars
+                options.addArguments("--disable-extensions"); // disabling extensions
+                options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+                options.addArguments("--no-sandbox"); // Bypass OS security model
+
                 if ("Y".equalsIgnoreCase(System.getenv("HEADLESS"))) {
                     options.addArguments("--headless");
                     options.addArguments("--disable-gpu");
