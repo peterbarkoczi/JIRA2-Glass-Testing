@@ -16,26 +16,23 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
 public abstract class Page {
     WebDriver driver;
     WebDriverWait wait;
-    String url;
 
     @FindBy(css = "#user-options > a")
     WebElement userOptionsLink;
-
     @FindBy(id = "log_out")
     List<WebElement> logoutButtons;
-
     @FindBy(id = "create_link")
     WebElement createButton;
+
+    static String projectKey = "UVG";
+    static String glassURL = "projects/" + projectKey + "?selectedItem=com.codecanvas.glass:glass";
+    static String projectSettingsURL = "plugins/servlet/project-config/" + projectKey + "/summary";
 
     public Page(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 10);
         AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(this.driver, 20);
         PageFactory.initElements(factory, this);
-    }
-
-    public String getUrl() {
-        return this.url;
     }
 
     void fillInputField(WebElement inputField, String inputText) {
@@ -80,5 +77,13 @@ public abstract class Page {
 
     public Boolean isTestUserLoggedIn(String username) {
         return wait.until(ExpectedConditions.attributeToBe(userOptionsLink, "data-username", username));
+    }
+
+    public static String getGlassURL() {
+        return glassURL;
+    }
+
+    public static String getProjectSettingsURL() {
+        return projectSettingsURL;
     }
 }

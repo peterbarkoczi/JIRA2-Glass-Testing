@@ -3,6 +3,9 @@ package UvegesKlan;
 import POM.DashboardPage;
 import POM.LoginPage;
 import POM.LogoutPage;
+import POM.Page;
+import com.thoughtworks.gauge.BeforeStep;
+import com.thoughtworks.gauge.Step;
 import driver.Driver;
 import org.openqa.selenium.WebDriver;
 
@@ -11,7 +14,6 @@ public class BaseTest {
     protected String baseUrl = System.getenv("JIRA2_BASEURL");
     protected String username = System.getenv("JIRA2_USERNAME");
     protected String password = System.getenv("JIRA2_PASSWORD");
-    protected String mainPage = baseUrl + "";
 
     LoginPage loginPage;
     LogoutPage logoutPage;
@@ -39,4 +41,31 @@ public class BaseTest {
             this.logoutPage = new LogoutPage(driver);
     }
 
+    @BeforeStep
+    public void beforeStep() {
+        setDriver();
+    }
+
+    @Step("Go to main page")
+    public void goToMainPage() {
+        driver.get(baseUrl);
+    }
+
+    @Step("Go to Glass page")
+    public void goToGlassPage() {
+        driver.get(baseUrl + Page.getGlassURL());
+
+    }
+
+    @Step("Go to Project Settings page")
+    public void goToProjectSettingsPage() {
+        System.out.println("---- BEFORE -- Go to Project Settings page ----");
+        driver.get(baseUrl + Page.getProjectSettingsURL());
+        System.out.println("---- AFTER  -- Go to Project Settings page ----");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
