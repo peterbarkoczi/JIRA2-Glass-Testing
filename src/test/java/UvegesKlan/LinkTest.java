@@ -64,7 +64,21 @@ public class LinkTest extends BaseTest {
     @Step("General <innerTab> settings page open in new window")
     public void testVerifyInnerTabSettingsPage(String innerTab) {
         projectSettingsPage.changeTab(2);
-        Assertions.assertTrue(projectSettingsPage.isInnerTabDetailsFormAppear(innerTab));
+        Assertions.assertTrue(projectSettingsPage.isSettingsPageAppear(innerTab));
+        driver.close();
+        projectSettingsPage.changeTab(1);
+    }
+
+
+    @Step("Select first issue type")
+    public void selectIssueType() {
+        glassPage.selectFirstIssueType();
+    }
+
+    @Step("Issue Type <issueType_link> settings page open in new window")
+    public void testVerifyIssueTypeSettingsPage(String issueType_link) {
+        projectSettingsPage.changeTab(2);
+        Assertions.assertTrue(projectSettingsPage.isSettingsPageAppear(issueType_link));
         driver.close();
         projectSettingsPage.changeTab(1);
     }
