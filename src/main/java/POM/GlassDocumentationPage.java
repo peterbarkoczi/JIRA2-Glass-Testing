@@ -25,6 +25,9 @@ public class GlassDocumentationPage extends Page {
     @FindBy(id = "glass-general-nav")
     private WebElement generalTab;
 
+    @FindBy (id = "glass-workflow-nav")
+    private WebElement issueTypesTab;
+
     @FindBy(id = "glass-people-nav")
     private WebElement peopleTab;
 
@@ -55,6 +58,15 @@ public class GlassDocumentationPage extends Page {
     @FindBy(xpath = "//*[@id=\"glass-general-schemes-panel\"]/div/h2/a/span")
     private WebElement schemesSettingsLink;
 
+    @FindBy(xpath = "//*[@id=\"glass-workflow-panel\"]/div/div[2]/div[1]/h2/a/span")
+    private WebElement workflowSettingsLink;
+
+    @FindBy(xpath = "//*[@id=\"glass-workflow-panel\"]/div/div[2]/div[2]/h2/a/span")
+    private WebElement screensSettingsLink;
+
+    @FindBy(xpath = "//*[@id=\"dropdown-issuetypes\"]/div/aui-section/div/aui-item-link[1]/a")
+    private WebElement firstIssueType;
+
     public GlassDocumentationPage(WebDriver driver) {
         super(driver);
     }
@@ -68,19 +80,15 @@ public class GlassDocumentationPage extends Page {
         switch (tab) {
             case "General":
                 wait.until(ExpectedConditions.elementToBeClickable(generalTab)).click();
-//                clickOn(generalTab);
                 break;
             case "People":
                 wait.until(ExpectedConditions.elementToBeClickable(peopleTab)).click();
-//                clickOn(peopleTab);
                 break;
             case "Permissions":
                 wait.until(ExpectedConditions.elementToBeClickable(permissionsTab)).click();
-//                clickOn(permissionsTab);
                 break;
             case "Notifications":
                 wait.until(ExpectedConditions.elementToBeClickable(notificationsTab)).click();
-//                clickOn(notificationsTab);
                 break;
         }
     }
@@ -130,6 +138,12 @@ public class GlassDocumentationPage extends Page {
             case "Scemes":
                 clickOn(schemesSettingsLink);
                 break;
+            case "Workflow":
+                clickOn(workflowSettingsLink);
+                break;
+            case "Screens":
+                clickOn(screensSettingsLink);
+                break;
         }
     }
 
@@ -140,5 +154,14 @@ public class GlassDocumentationPage extends Page {
             if (version.getText().equals(versionName))
                 return true;
         } return false;
+    }
+
+    private void clickOnIssueTypesTab() {
+        clickOn(issueTypesTab);
+    }
+
+    public void selectFirstIssueType() {
+        clickOnIssueTypesTab();
+        clickOn(firstIssueType);
     }
 }

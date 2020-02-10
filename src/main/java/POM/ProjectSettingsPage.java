@@ -34,6 +34,12 @@ public class ProjectSettingsPage extends Page {
     @FindBy(id = "project-config-panel-notifications")
     private WebElement notificationList;
 
+    @FindBy(id = "project-config-panel-workflows")
+    private WebElement workflowList;
+
+    @FindBy(id = "project-config-panel-screens")
+    private WebElement screenList;
+
     public ProjectSettingsPage(WebDriver driver) {
         super(driver);
     }
@@ -60,14 +66,20 @@ public class ProjectSettingsPage extends Page {
         return false;
     }
 
-    public boolean isInnerTabDetailsFormAppear(String innerTab) {
-        switch (innerTab) {
+    public boolean isSettingsPageAppear(String settingsPage) {
+        switch (settingsPage) {
             case "Components":
                 wait.until(ExpectedConditions.visibilityOf(componentsList));
                 return componentsList.isDisplayed();
             case "Versions":
                 wait.until(ExpectedConditions.visibilityOf(versionsList));
                 return versionsList.isDisplayed();
+            case "Workflow":
+                wait.until(ExpectedConditions.visibilityOf(workflowList));
+                return workflowList.isDisplayed();
+            case "Screens":
+                wait.until(ExpectedConditions.visibilityOf(screenList));
+                return screenList.isDisplayed();
         }
         return false;
     }
