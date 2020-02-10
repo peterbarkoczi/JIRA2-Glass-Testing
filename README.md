@@ -1,33 +1,38 @@
-## About this template
+## JIRA2 Glass Documentation test
 
-This is a template to get started with a Gauge project that uses Selenium as the driver to interact with a web browser.
+In this project Jira2's Glass Documentation feature is tested by automated tests
 
-## Installing this template
+## Tasks
 
-    gauge --install java_maven_selenium
+- Created manual test cases (recorded in Jira)
+- Created automation tests based on manual test cases for Jira2's Glass Documentation feature
+- use advanced testing techniques like Page Object Model with Page Factory
 
-## Building on top of this template
+## Tested features
 
-### Defining Specifications
+Login,
 
-* This template includes a sample specification which opens up a browser and navigates to `Get Started` page of Gauge.
-* Add more specifications on top of sample specification.
+Logout,
 
-Read more about [Specifications](http://getgauge.io/documentation/user/current/specifications/README.html)
+Glass Versions Specifications,
 
-### Writing the implementations
+Quick links to the following project configuration sections:
+- General, 
+- Components, 
+- Versions, 
+- Workflow, 
+- Screens, 
+- People, 
+- Permissions, 
+- Notifications
 
-This is where the java implementation of the steps would be implemented. Since this is a Selenium based project, the java implementation would invoke Selenium APIs as required.
+## Used technologies and tools
 
-_We recommend considering modelling your tests using the [Page Object](https://github.com/SeleniumHQ/selenium/wiki/PageObjects) pattern, and the [Webdriver support](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) for creating them._
+- Selenium WebDriver(Java)
+- bonigarcia WebDriverManager
+- Gauge
+- JUnit
+- IntelliJ
 
-- Note that every Gauge step implementation is annotated with a `Step` attribute that takes the Step text pattern as a parameter.
-Read more about [Step implementations in Java](http://getgauge.io/documentation/user/current/test_code/java/java.html)
+ 
 
-### Execution
-
-* You can execute the specification as:
-
-```
-mvn test
-```
