@@ -10,21 +10,21 @@ In this project Jira2's Glass Documentation feature is tested by automated tests
 
 ## Tested features
 
-Login,
+- Login,
 
-Logout,
+- Logout,
 
-Glass Versions Specifications,
+- Glass Versions Specifications,
 
-Quick links to the following project configuration sections:
-- General, 
-- Components, 
-- Versions, 
-- Workflow, 
-- Screens, 
-- People, 
-- Permissions, 
-- Notifications
+- Quick links to the following project configuration sections:
+    - General, 
+    - Components, 
+    - Versions, 
+    - Workflow, 
+    - Screens, 
+    - People, 
+    - Permissions, 
+    - Notifications
 
 ## Used technologies and tools
 
